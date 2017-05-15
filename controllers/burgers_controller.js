@@ -40,7 +40,8 @@ router.post("/create", function(req, res) {
 
 // put route -> back to index
 router.put("/update", function(req, res) {
-  db.burgers.update(req.body.burger_name, function(result) {
+  db.burgers.update({devoured:true},
+    {where:{id: req.body.burger_id}}).then(function(result) {
     // wrapper for orm.js that using MySQL update callback will return a log to console,
     // render back to index with handle
     console.log(result);
@@ -49,3 +50,4 @@ router.put("/update", function(req, res) {
 });
 
 module.exports = router;
+// db.burgers.update({devoured:true},{where:{id: req.body.burger_id}}).then(function(result) { /* ... */ });
