@@ -16,7 +16,7 @@ router.get("/", function(req, res) {
   // express callback response by calling burger.selectAllBurger
 
   db.burgers.findAll().then( function(data) {
-    // Wrapping the array of returned burgers in a object so it can be referenced inside our handlebars
+    // Wrapping the array of returned burgers in a object so it can be referenced inside our handlebars =hbsobject
     var hbsObject = { burgers: data };
     res.render("index", hbsObject);
   });
